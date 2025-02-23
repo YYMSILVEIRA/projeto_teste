@@ -18,7 +18,9 @@ class UsuarioController extends Controller
     {
         return view('usuario.login');
     }
-
+    public function adm(){
+        return view('usuario.admin');
+    }
     public function valida_login(Request $request)
     {
         // Validação dos campos

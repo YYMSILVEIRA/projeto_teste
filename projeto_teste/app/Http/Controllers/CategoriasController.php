@@ -8,6 +8,10 @@ class CategoriasController extends Controller
 {
     public function cadastrar_categoria()
     {
-        return view('categorias.create');
+        return view('categorias.cadastrar');
+    }
+    public function listar_categoria()
+    {
+        return view('categorias.listar');
     }
 }

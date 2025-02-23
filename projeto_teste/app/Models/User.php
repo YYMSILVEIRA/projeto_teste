@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -44,5 +45,16 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    // Um usuário pode ter vários papéis (roles)
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Roles::class, 'role_user');
+    }
+
+    // Um usuário pode ter várias permissões através dos papéis
+    public function permissions(): BelongsToMany
+    {
+        return $this->roles()->with('permissions');
     }
 }

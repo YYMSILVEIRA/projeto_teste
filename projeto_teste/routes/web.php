@@ -1,7 +1,11 @@
 <?php
+//Chamando os controllers
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CursosController;
+use App\Http\Controllers\CategoriasController;
+//Chamando os controllers
+
 use Illuminate\Support\Facades\Route;
 
 //Páginas públicas
@@ -13,9 +17,15 @@ Route::get('/', [HomeController::class, 'inicio'])->name('home');
 //Páginas que somente usuários logados podem acessar
 Route::middleware(['auth'])->group(function () {
     Route::get('/todos_cursos', [CursosController::class, 'todos_cursos'])->name('todos_cursos');
+    Route::get('/categorias/create', [CursosController::class, 'cadastrar_categoria'])->name('cadastrar_categoria');
 });
 //Páginas que somente usuários logados podem acessar
 
+
+
+//Páginas que somente o adm deve acessar
+Route::get('/admin', [UsuarioController::class, 'adm'])->name('painel_adm')->middleware('auth', 'permission:adm');
+//Páginas com permissões especiais
 
 
 //Rotas do fluxo de usuários
