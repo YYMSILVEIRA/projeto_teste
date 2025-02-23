@@ -4,6 +4,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CursosController;
 use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\PermissoesController;
 //Chamando os controllers
 
 use Illuminate\Support\Facades\Route;
@@ -17,7 +18,7 @@ Route::get('/', [HomeController::class, 'inicio'])->name('home');
 //Páginas que somente usuários logados podem acessar
 Route::middleware(['auth'])->group(function () {
     Route::get('/todos_cursos', [CursosController::class, 'todos_cursos'])->name('todos_cursos');
-    Route::get('/categorias/create', [CursosController::class, 'cadastrar_categoria'])->name('cadastrar_categoria');
+    
 });
 //Páginas que somente usuários logados podem acessar
 
@@ -25,6 +26,14 @@ Route::middleware(['auth'])->group(function () {
 
 //Páginas que somente o adm deve acessar
 Route::get('/admin', [UsuarioController::class, 'adm'])->name('painel_adm')->middleware('auth', 'permission:adm');
+Route::get('/categorias/cadastrar', [CategoriasController::class, 'cadastrar_categoria'])->name('cadastrar_categoria')->middleware('auth', 'permission:adm');
+Route::get('/categorias/listar', [CategoriasController::class, 'listar_categoria'])->name('listar_categoria')->middleware('auth', 'permission:adm');
+Route::get('/categorias/editar', [CategoriasController::class, 'editar_categoria'])->name('editar_categoria')->middleware('auth', 'permission:adm');
+
+Route::get('/permissoes/cadastrar', [PermissoesController::class, 'cadastrar_permissoes'])->name('cadastrar_permissao')->middleware('auth', 'permission:adm');
+Route::get('/permissoes/listar', [PermissoesController::class, 'listar_permissoes'])->name('listar_permissao')->middleware('auth', 'permission:adm');
+Route::get('/permissoes/editar', [PermissoesController::class, 'editar_permissoes'])->name('editar_permissao')->middleware('auth', 'permission:adm');
+
 //Páginas com permissões especiais
 
 
