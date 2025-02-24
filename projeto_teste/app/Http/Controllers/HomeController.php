@@ -9,6 +9,14 @@ class HomeController extends Controller
 {
     public function inicio()
     {
-        return view('inicio'); // Certifique-se de ter a view 'home.blade.php' em 'resources/views'
+        return view('inicio'); 
+    }
+    public function contato()
+    {
+        return view('contato'); 
+    }
+    public function sobre()
+    {
+        return view('sobre'); 
     }
 }

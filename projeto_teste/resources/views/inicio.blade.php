@@ -2,23 +2,7 @@
 {!! Abrir_HtmlHeader(tituloAdicional:"IB2S Cursos") !!}
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">IB2S Cursos</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#cursos">Todos os Cursos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
-                    <li class="nav-item">{!! HBtn(txtBtn:"Entrar", link:'login') !!}</li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    {!! cabecalhoPadrao() !!}
     
     <header class="text-center text-light bg-dark py-5">
         <div class="container">

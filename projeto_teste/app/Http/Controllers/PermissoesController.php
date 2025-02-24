@@ -14,4 +14,7 @@ class PermissoesController extends Controller
     {
         return view('permissoes.listar');
     }
+    public function editar_permissoes($id){
+        return view('permissoes.editar', ['id' => $id]);
+    }
 }

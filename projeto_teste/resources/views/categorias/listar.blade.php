@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="container mt-5">
+        {!! cabecalho() !!}
         <h1>Categorias</h1>
         <a href="create_category.html" class="btn btn-primary mb-3">Cadastrar Nova Categoria</a>
         

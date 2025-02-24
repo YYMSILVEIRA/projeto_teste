@@ -14,4 +14,7 @@ class CategoriasController extends Controller
     {
         return view('categorias.listar');
     }
+    public function editar_categoria($id){
+        return view('categorias.editar', ['id' => $id]);
+    }
 }

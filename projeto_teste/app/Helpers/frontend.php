@@ -371,5 +371,97 @@ function card($htmlImagem="", $titulo, $descricao, $htmlBotao, $tipRet="IMP"){
     }
 }
 
+function cabecalho($tipRet="IMP"){
+    $conteudo = '    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="'.Route("painel_adm").'">Admin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="'.Route("listar_categoria").'">Categorias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="'.Route("listar_usuarios").'">Usuários</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="'.Route("listar_permissao").'">Permissões</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="'.route("todos_cursos").'">Ir para todos os cursos</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="'.Route("logout").'">Sair</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>';
+    
+    if ($tipRet == 'IMP'){
+        echo $conteudo;
+    }else{
+        return $conteudo;
+    }
+}
+
+function cabecalhoPadrao($tipRet="IMP"){
+    $entrar_sair="";
+    if(Auth::check()){
+        $entrar_sair='<li class="nav-item"><a href="'.Route("logout").'" class="btn btn-danger ">Sair</a></li>';
+    }else{
+        $entrar_sair='<li class="nav-item"><a href="'.route("login").'" class="btn btn-danger ">Entrar</a></li>';
+    }
+    $conteudo = '    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="'.Route('home').'">IB2S Cursos</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="'.Route('home').'">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="'.Route("todos_cursos").'">Todos os Cursos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="'.Route('sobre').'">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="'.Route("contato").'">Contato</a></li>
+                    '.$entrar_sair.'
+                </ul>
+            </div>
+        </div>
+    </nav>';
+    
+    if ($tipRet == 'IMP'){
+        echo $conteudo;
+    }else{
+        return $conteudo;
+    }
+}
+
+
+
+function cardAdmMenu($titulo="", $descricao="", $hBtn="", $tipRet="IMP"){
+    $conteudo = '<div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        '.$titulo.'
+                    </div>
+                    <div class="card-body">
+                        <p>'.$descricao.'</p>
+                        '.$hBtn.'
+                    </div>
+                </div>
+            </div>';
+    if ($tipRet == 'IMP'){
+        echo $conteudo;
+    }else{
+        return $conteudo;
+    }
+}
 
 ?>

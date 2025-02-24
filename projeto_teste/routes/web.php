@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Route;
 
 //Páginas públicas
 Route::get('/', [HomeController::class, 'inicio'])->name('home');
+Route::get('/contato', [HomeController::class, 'contato'])->name('contato');
+Route::get('/sobre', [HomeController::class, 'sobre'])->name('sobre');
 //Páginas públicas
 
 
@@ -33,6 +35,10 @@ Route::get('/categorias/editar', [CategoriasController::class, 'editar_categoria
 Route::get('/permissoes/cadastrar', [PermissoesController::class, 'cadastrar_permissoes'])->name('cadastrar_permissao')->middleware('auth', 'permission:adm');
 Route::get('/permissoes/listar', [PermissoesController::class, 'listar_permissoes'])->name('listar_permissao')->middleware('auth', 'permission:adm');
 Route::get('/permissoes/editar', [PermissoesController::class, 'editar_permissoes'])->name('editar_permissao')->middleware('auth', 'permission:adm');
+
+Route::get('/usuario/cadastrar', [UsuarioController::class, 'cadastrar_usuario'])->name('cadastrar_usuario')->middleware('auth', 'permission:adm');
+Route::get('/usuario/listar', [UsuarioController::class, 'listar_usuario'])->name('listar_usuarios')->middleware('auth', 'permission:adm');
+
 
 //Páginas com permissões especiais
 

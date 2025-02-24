@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="container mt-5">
+        {!! cabecalho() !!}
         <h1>Permissões</h1>
         
         <table class="table">

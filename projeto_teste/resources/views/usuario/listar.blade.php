@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administração - Usuários</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container mt-5">
-        <h1>Usuários</h1>
-        <a href="create_user.html" class="btn btn-primary mb-3">Cadastrar Novo Usuário</a>
+{!! Abrir_HtmlHeader('Listagem de usuários cadastrados') !!}
+    {!! Abrir_Container() !!}
         
+        {!! cabecalho() !!} 
+        
+        {!! Titulo("Usuários",nroTitulo:"1") !!}
+        
+        
+        {!! HBtn('Cadastrar Novo Usuário', 'cadastrar_usuario','btn-primary','mb-3') !!}
+
+
         <table class="table">
             <thead>
                 <tr>
@@ -45,8 +43,7 @@
                 </tr>
             </tbody>
         </table>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+    {!! Fechar_Container() !!}
+
+{!! Fechar_HtmlHeader() !!}

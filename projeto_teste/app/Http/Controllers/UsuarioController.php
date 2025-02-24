@@ -21,6 +21,17 @@ class UsuarioController extends Controller
     public function adm(){
         return view('usuario.admin');
     }
+    public function cadastrar_usuario()
+    {
+        return view('usuario.cadastrar');
+    }
+    public function listar_usuario()
+    {
+        return view('usuario.listar');
+    }
+    public function editar_usuario($id){
+        return view('usuario.editar', ['id' => $id]);
+    }
     public function valida_login(Request $request)
     {
         // Validação dos campos
@@ -38,7 +49,7 @@ class UsuarioController extends Controller
             return redirect()->route('todos_cursos')->with('success', 'Login realizado com sucesso!');
         } else {
             // Caso as credenciais sejam inválidas
-            return redirect()->route('usuario.login')->withErrors(['email' => 'Credenciais inválidas.']);
+            return redirect()->route('login')->withErrors(['email' => 'Credenciais inválidas.']);
         }
     }
 

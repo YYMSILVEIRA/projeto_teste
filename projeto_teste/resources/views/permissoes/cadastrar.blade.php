@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="container mt-5">
+        {!! cabecalho() !!}
         <h1>Cadastrar Permissão</h1>
         <form action="#" method="POST">
             <div class="form-group">

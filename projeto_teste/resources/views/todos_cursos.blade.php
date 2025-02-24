@@ -8,26 +8,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">IB2S Cursos</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#cursos">Todos os Cursos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
-                    <li class="nav-item">{!! HBtn(txtBtn:'Sair', link:'logout') !!}</li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    {!! cabecalhoPadrao() !!}
     
     <header class="text-center text-light bg-dark py-1">
         <div class="container">
+            <!-- Verifica se o usuário é admin -->
+            @if(auth()->user() && auth()->user()->roles->contains('nome', 'adm'))
+                    {!! HBtn(txtBtn:"Painel Administrador",link:"painel_adm", tpBtn:"btn-warning") !!}
+            @endif
             <h1>Todos os Cursos Disponíveis</h1>
             <p class="lead">Encontre o curso ideal para você e avance na sua carreira!</p>
         </div>
