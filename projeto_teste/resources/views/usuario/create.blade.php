@@ -82,7 +82,9 @@ $array_scripts_final=[
 @endphp
 
 {!! Abrir_HtmlHeader(" Página Inicial", estilo:Estilizacao_Login(tipRet: 'RETORNAR')) !!}
+    
     {!! Abrir_LoginContainer() !!}
+        
         <h2>Cadastrar Usuário</h2>
 
         {{-- Exibe mensagens de sucesso --}}

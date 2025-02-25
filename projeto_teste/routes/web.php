@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CursosController;
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\PermissoesController;
+use App\Http\Controllers\DashboardController;
 //Chamando os controllers
 
 use Illuminate\Support\Facades\Route;
@@ -39,8 +40,16 @@ Route::get('/permissoes/editar', [PermissoesController::class, 'editar_permissoe
 Route::get('/usuario/cadastrar', [UsuarioController::class, 'cadastrar_usuario'])->name('cadastrar_usuario')->middleware('auth', 'permission:adm');
 Route::get('/usuario/listar', [UsuarioController::class, 'listar_usuario'])->name('listar_usuarios')->middleware('auth', 'permission:adm');
 
-
 //Páginas com permissões especiais
+
+
+//Dashboard do vendedor
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard')->middleware('auth', 'permission:vendedor');
+//Dashboard do vendedor
+
+
+
+
 
 
 //Rotas do fluxo de usuários

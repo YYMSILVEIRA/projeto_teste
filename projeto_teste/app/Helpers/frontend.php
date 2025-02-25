@@ -443,8 +443,6 @@ function cabecalhoPadrao($tipRet="IMP"){
     }
 }
 
-
-
 function cardAdmMenu($titulo="", $descricao="", $hBtn="", $tipRet="IMP"){
     $conteudo = '<div class="col-md-4">
                 <div class="card">
@@ -463,5 +461,68 @@ function cardAdmMenu($titulo="", $descricao="", $hBtn="", $tipRet="IMP"){
         return $conteudo;
     }
 }
+
+function tabela($lstCabColunas=[], $ArrDados=[], $lstAcoes=[]){
+    $Colunas="";
+    foreach ($lstCabColunas as $coluna){
+        $Colunas .= '<th>'.$coluna.'</th>';
+    }
+    
+    $linhas="";
+    foreach ($ArrDados as $linha){
+        $linhas.= '<tr>';
+        foreach ($linha as $valor){
+            $linhas.= '<td>'.$valor.'</td>';
+        }
+        $linhas.= '</tr>';
+    }
+
+    $conteudo = '<table class="table">
+            <thead>
+                <tr>
+                    '.$Colunas.'
+                </tr>
+            </thead>
+            <tbody>
+                    '.$linhas.'
+            </tbody>
+        </table>';
+}
+
+
+
+class SVG {
+    private array $symbols = [
+        "check2" => "M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z",
+        "circle-half" => "M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z",
+        "moon-stars-fill" => "M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z",
+        "sun-fill" => "M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13z",
+        "cart" => "M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z",
+        "cracha" => "M6 .75A2.25 2.25 0 0 0 3.75 3v18c0 1.266.984 2.25 2.25 2.25h12A2.25 2.25 0 0 0 20.25 21V3c0-1.219-1.031-2.25-2.25-2.25H6ZM3 3c0-1.64 1.313-3 3-3h12c1.64 0 3 1.36 3 3v18c0 1.688-1.36 3-3 3H6c-1.688 0-3-1.313-3-3V3Zm11.25 7.5c0-.797-.469-1.5-1.125-1.922-.703-.422-1.594-.422-2.25 0C10.172 9 9.75 9.703 9.75 10.5c0 .844.422 1.547 1.125 1.969.656.422 1.547.422 2.25 0 .656-.422 1.125-1.125 1.125-1.969ZM9 10.5c0-1.031.563-2.016 1.5-2.578.89-.516 2.063-.516 3 0 .89.562 1.5 1.547 1.5 2.578 0 1.078-.61 2.063-1.5 2.625-.938.516-2.11.516-3 0A3.049 3.049 0 0 1 9 10.5Zm0-7.125A.37.37 0 0 1 9.375 3h5.25c.188 0 .375.188.375.375a.37.37 0 0 1-.375.375h-5.25C9.141 3.75 9 3.61 9 3.375Zm-1.5 15a.37.37 0 0 1-.375.375c-.234 0-.375-.14-.375-.375 0-1.828 1.5-3.375 3.375-3.375h3.75c1.828 0 3.375 1.547 3.375 3.375a.37.37 0 0 1-.375.375c-.234 0-.375-.14-.375-.375 0-1.406-1.219-2.625-2.625-2.625h-3.75c-1.453 0-2.625 1.219-2.625 2.625Z"
+    ];
+
+    public function render(string $symbol = null): string {
+        if ($symbol && isset($this->symbols[$symbol])) {
+            return "<svg xmlns='http://www.w3.org/2000/svg'><symbol id='$symbol' viewBox='0 0 16 16'><path d='{$this->symbols[$symbol]}'/></symbol></svg>";
+        }
+        
+        $svg = '<svg xmlns="http://www.w3.org/2000/svg" class="d-none">';
+        foreach ($this->symbols as $id => $path) {
+            $svg .= "<symbol id='$id' viewBox='0 0 16 16'><path d='$path'/></symbol>";
+        }
+        $svg .= '</svg>';
+        return $svg;
+    }
+}
+
+// Exemplo de uso:
+//$svgSymbols = new SVG();
+//echo $svgSymbols->render("check2");
+
+
+
+
+
+
 
 ?>

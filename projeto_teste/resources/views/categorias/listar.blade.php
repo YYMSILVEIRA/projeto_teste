@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administração - Categorias</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container mt-5">
+{!! Abrir_HtmlHeader('Todas as categorias do sistema') !!}
+
+    {!! Abrir_Container() !!}
         {!! cabecalho() !!}
-        <h1>Categorias</h1>
-        <a href="create_category.html" class="btn btn-primary mb-3">Cadastrar Nova Categoria</a>
         
+        {!! Titulo('Categorias', nroTitulo:'1') !!}
+        
+        {!! HBtn("Cadastrar Nova Categoria","cadastrar_categoria","btn-primary", "mb-3") !!}
+
         <table class="table">
             <thead>
                 <tr>
@@ -43,8 +38,7 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+        
+    {!! Fechar_Container() !!}
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+{!! Fechar_HtmlHeader() !!}

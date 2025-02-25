@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User; // Importa o modelo do usuário (caso esteja usando um)
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class UsuarioController extends Controller
@@ -34,6 +34,7 @@ class UsuarioController extends Controller
     }
     public function valida_login(Request $request)
     {
+        
         // Validação dos campos
         $request->validate([
             'email' => 'required|email',
@@ -45,6 +46,9 @@ class UsuarioController extends Controller
             'email' => $request->email,
             'password' => $request->password,
         ])) {
+            // Registrar os logs de acesso
+            logUserAccess($request,'Login');
+
             // Caso as credenciais sejam válidas
             return redirect()->route('todos_cursos')->with('success', 'Login realizado com sucesso!');
         } else {
